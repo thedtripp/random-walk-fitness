@@ -1,1 +1,1 @@
-web: gunicorn randomwalk_app:app
+web: gunicorn app:app
