@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333333;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin-top: 30px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        a {
+            display: block;
+            color: #333333;
+            text-decoration: none;
+            padding: 10px;
+            background-color: #ffffff;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        a:hover {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Home Page</h1>
+    <ul>
+        <li><a href="{{ url_for('random_exercise') }}">Generate Random Exercise</a></li>
+        <li><a href="{{ url_for('get_my_exercises') }}">Exercise History</a></li>
+        <li><a href="{{ url_for('get_exercises') }}">All Exercises</a></li>
+        <!-- Add more relevant links here -->
+    </ul>
+</body>
+</html>

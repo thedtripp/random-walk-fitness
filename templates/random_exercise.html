@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Random Exercise</title>
+    <style>
+        :root {
+            --button-color: #165d18;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+
+        h1 {
+            color: #333333;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        h2 {
+            color: #666666;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        p {
+            color: #666666;
+            text-align: center;
+            font-size: 18px;
+            margin-top: 10px;
+        }
+
+        form {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        input[type="submit"],
+        button {
+            background-color: var(--button-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 16px;
+            cursor: pointer;
+            margin-right: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover,
+        button:hover {
+            background-color: #45a049;
+        }
+
+        label {
+            display: block;
+            color: #333333;
+            margin-top: 20px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            padding: 5px;
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Random Exercise</h1>
+    <h2>{{ exercise.name }}</h2>
+    <p>Repetitions: {{ repetitions }}</p>
+    <p>Weight: {{ weight }}</p>
+    <form action="{{ url_for('done') }}" method="POST">
+        <input type="hidden" name="exercise_name" value="{{ exercise.name }}">
+        <input type="hidden" name="repetitions" value="{{ repetitions }}">
+        <input type="hidden" name="weight" value="{{ weight }}">
+        <input type="submit" value="Done">
+    </form>
+    <form action="{{ url_for('random_exercise') }}" method="POST">
+        <!-- Other form fields -->
+        <input type="hidden" name="_method" value="GET">
+        <button type="submit" name="skip">Skip</button>
+    </form>
+    
+    <form action="{{ url_for('attempt') }}" method="POST">
+        <input type="hidden" name="exercise_name" value="{{ exercise.name }}">
+        <input type="hidden" name="weight" value="{{ weight }}">
+        <label for="repetitions">Repetitions:</label>
+        <input type="text" name="repetitions" pattern="[0-9]+" title="Please enter a number" required>
+        <input type="submit" value="Attempt">
+    </form>
+</body>
+</html>
