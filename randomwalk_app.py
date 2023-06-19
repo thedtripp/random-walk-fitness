@@ -49,7 +49,7 @@ def insert_exercise(name, repetitions, weight):
 
 @app.route('/my-exercises')
 def get_my_exercises():
-    exercises = ExerciseEntry.query.all()
+    exercises = ExerciseEntry.query.order_by(ExerciseEntry.timestamp.desc()).all()
     return render_template('my-exercises.html', exercises=exercises)
 
 @app.route('/exercises')
